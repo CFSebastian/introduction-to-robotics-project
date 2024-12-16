@@ -1,4 +1,4 @@
-# Bluetooth-Controlled Car and Controller Using ESP32
+# Car and Controller Using ESP32
 ## Introduction
   
 ## General Description
