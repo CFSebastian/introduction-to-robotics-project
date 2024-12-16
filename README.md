@@ -31,8 +31,6 @@
 - **2x 4-Battery Pack**: Power source for the car.
 - **4x 330-ohm resistors**: Used for current limiting.
 
-#### Common:
-- **Wires**: Facilitate connectivity between the components.
 
 ### Electronic Schematics
 
