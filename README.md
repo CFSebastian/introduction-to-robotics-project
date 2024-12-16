@@ -29,7 +29,7 @@
 - **L293D**: The H-bridge driver that helps the car board control the motors and protects it from high currents.
 - **Passive Buzzer**: Represents the horn.
 - **2x 4-Battery Pack**: Power source for the car.
-- **4x 330-ohm resistors**: Used for current limiting.
+- **3x 330-ohm resistors**: Used for current limiting.
 
 
 ### Electronic Schematics
