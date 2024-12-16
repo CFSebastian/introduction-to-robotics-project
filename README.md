@@ -2,9 +2,19 @@
 
 ## Introduction
 
-&nbsp;&nbsp; My project is a car controlled wirelessly with a controller. The primary function of the components is to connect with each other so that the operator can move the car forward and backward, steer, and honk.  
-&nbsp;&nbsp; The initial idea was to learn how to control a motorized object wirelessly, creating a foundation for future projects such as an electric bike or skateboard. The project needed to remain plausible given the time constraints, so more complex ideas were discarded.  
-&nbsp;&nbsp; I believe this project can serve as a good learning example and an application of basic principles relevant to the transportation industry.
+My project is a wirelessly controlled car operated via a custom-built controller. The system enables the operator to move the car forward, backward, steer, and honk.  
+
+### What Does the Project Do?  
+The car and controller communicate wirelessly, allowing essential functions such as directional movement, steering, and honking.  
+
+### What Was the Initial Idea?  
+The project was inspired by the goal of learning how to control a motorized object wirelessly, laying a foundation for future projects   
+like an electric bike or skateboard. To keep it achievable within time constraints, the design was kept simple and focused.  
+
+### Why Is It Useful?  
+This project serves as a practical example of wireless control systems, offering learning opportunities for students and hobbyists.   
+It bridges theory and real-world application while fostering skills in robotics and transportation technologies.  
+For us, it has been a stepping stone toward more advanced projects and a valuable hands-on experience.
 
 ## General Description
 
