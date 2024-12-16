@@ -81,7 +81,7 @@ TO DO
 - [L293 Datasheet](https://www.ti.com/lit/ds/symlink/l293.pdf)  
 
 **Passive Buzzer**:  
-- [Passive vs Active Buzzer](https://deepbluembedded.com/active-buzzer-vs-passive-buzzer/)  
+- [Passive Active Buzzer](https://deepbluembedded.com/arduino-active-passive-buzzer/)  
 
 ### Software
 
