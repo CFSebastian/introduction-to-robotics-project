@@ -18,7 +18,7 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 
 ## General Description
 
-![plot](./Media/SchemaBlock.drawio%20(1).png)
+![plot](./Media/Copie%20pentru%20SchemaBlock.drawio.png)
 
 ## Hardware Design
 
