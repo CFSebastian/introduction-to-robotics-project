@@ -97,5 +97,10 @@ TO DO
 
 **IDE**:  
 - [Arduino IDE](https://www.arduino.cc/en/software)
+**Bluetooth Low Energy(BLE)**:  
+- [BLE materials+code](https://dronebotworkshop.com/esp32-bluetooth/)
+- [BLE materials+code](https://github.com/mo-thunderz)
+- [BLE libraries](https://github.com/espressif/arduino-esp32/tree/master/libraries/BLE)
+
 
 
