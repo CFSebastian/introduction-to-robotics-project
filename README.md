@@ -56,15 +56,15 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 
 **IDE**: Arduino IDE
 
-#### ESP32-C3 SuperMini Environment:
-TO DO
-
-#### ESP32 Devkit V1 Environment:
-TO DO
-
-## Results Obtained
-
-TO DO
+### Librariest:
+**Bluetooth Low Energy(BLE)**-ESP32 BLE for Arduino  
+**LEDstrips (SWS2812 LED)**-FastLED
+#### Video:
+[![Demonstration Video](http://img.youtube.com/vi/ZfmHpDFt6Ck/0.jpg)](https://www.youtube.com/watch?v=ZfmHpDFt6Ck "Demonstration Video")  
+### Calibrations
+I calibrated the joystick with the serial monitor, observing where the dead zone is for the x and y axes, and their max and min values.  
+I noted them on a paper and the created defines for the joystick taking into acount some tolerances.
+[![Joystick calibration](http://img.youtube.com/vi/ZaIzt3UZlsc/0.jpg)](https://www.youtube.com/watch?v=ZaIzt3UZlsc "Joystick calibration")
 
 ## Conclusions
 
@@ -97,10 +97,14 @@ TO DO
 
 **IDE**:  
 - [Arduino IDE](https://www.arduino.cc/en/software)
+
 **Bluetooth Low Energy(BLE)**:  
 - [BLE materials+code](https://dronebotworkshop.com/esp32-bluetooth/)
 - [BLE materials+code](https://github.com/mo-thunderz)
 - [BLE libraries](https://github.com/espressif/arduino-esp32/tree/master/libraries/BLE)
 
+**FastLED**:
+- [materials+code](https://racheldebarros.com/arduino-projects/how-to-use-fastled-with-arduino-to-program-led-strips/)
+- [examples](https://github.com/FastLED/FastLED?utm_source=platformio&utm_medium=piohome)
 
 
