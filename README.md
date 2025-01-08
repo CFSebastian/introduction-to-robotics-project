@@ -54,7 +54,7 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 
 ### Development Environment
 
-**IDE**: PlatformIO
+**IDE**: Arduino IDE
 
 #### ESP32-C3 SuperMini Environment:
 TO DO
@@ -96,6 +96,6 @@ TO DO
 ### Software
 
 **IDE**:  
-- [PlatformIO](https://platformio.org/)
+- [Arduino IDE](https://www.arduino.cc/en/software)
 
 
