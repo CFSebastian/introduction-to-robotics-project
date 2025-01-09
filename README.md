@@ -60,8 +60,10 @@ Over all the project does the basics that it suposed to do and all it remains is
 ### Librariest:
 **Bluetooth Low Energy(BLE)**-ESP32 BLE for Arduino  
 **LEDstrips (SWS2812 LED)**-FastLED
+
 #### Video:
 [![Demonstration Video](http://img.youtube.com/vi/ZfmHpDFt6Ck/0.jpg)](https://www.youtube.com/watch?v=ZfmHpDFt6Ck "Demonstration Video")  
+
 ### Calibrations
 I calibrated the joystick with the serial monitor, observing where the dead zone is for the x and y axes, and their max and min values.  
 I noted them on a paper and the created defines for the joystick taking into acount some tolerances.
