@@ -51,7 +51,7 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 ![plot](./Media/SchemaTelecomanda.PNG)
 
 ## Software Design
-At this point in the project( milestone 3), the car and controler can comunicate via Bluetooth Low Energy, the car is moving, all be it not great thaks to the power consuption and the model of the chassis, the horn and led onthe car work fine and the led on thecontroler indicates when it is conected and not, but it remains block on blue when diconected becouse of the searchit does.  
+At this point in the project( milestone 3), the car and controler can comunicate via Bluetooth Low Energy, the car is moving, all be it not great thaks to the power consuption and primary because the model of the chassis does not allow all  the wheels make contact with the ground, the horn and leds work fine and indicates when it is conected and not.  
 Over all the project does the basics that it suposed to do and all it remains is minor fixes.   
 ### Development Environment
 
