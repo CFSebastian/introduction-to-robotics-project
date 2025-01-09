@@ -100,12 +100,12 @@ TO DO
 - [Arduino IDE](https://www.arduino.cc/en/software)
 
 **Bluetooth Low Energy(BLE)**:  
-- [BLE materials+code](https://dronebotworkshop.com/esp32-bluetooth/)
-- [BLE materials+code](https://github.com/mo-thunderz)
+- [BLE materials+examples](https://dronebotworkshop.com/esp32-bluetooth/)
+- [BLE materials+examples](https://github.com/mo-thunderz)
 - [BLE libraries](https://github.com/espressif/arduino-esp32/tree/master/libraries/BLE)
 
 **FastLED**:
-- [materials+code](https://racheldebarros.com/arduino-projects/how-to-use-fastled-with-arduino-to-program-led-strips/)
+- [materials+examples](https://racheldebarros.com/arduino-projects/how-to-use-fastled-with-arduino-to-program-led-strips/)
 - [examples](https://github.com/FastLED/FastLED?utm_source=platformio&utm_medium=piohome)
 
 
