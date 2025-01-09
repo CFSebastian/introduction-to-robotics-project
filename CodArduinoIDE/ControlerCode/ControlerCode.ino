@@ -7,6 +7,15 @@
 #define A3 3
 #define NUM_LEDS 1
 #define LED_PIN 20  
+#define LED_BRIGHTNESS 5
+
+//BLE
+#define CLIENT_MTU_VALUE 517
+#define SCAN_INTERVAL 1349
+#define SCAN_WINDOW 449
+#define SCAN_DURATION 5
+
+
 
 CRGB leds[NUM_LEDS];
 int xVal;
@@ -63,7 +72,7 @@ bool connectToServer() {
   pClient->setClientCallbacks(new MyClientCallback());
   pClient->connect(myDevice);
   Serial.println("Connected to server");
-  pClient->setMTU(517);
+  pClient->setMTU(CLIENT_MTU_VALUE);
 
   BLERemoteService *pRemoteService = pClient->getService(serviceUUID);
   if (pRemoteService == nullptr) {
@@ -112,17 +121,17 @@ void setup() {
 
   BLEScan *pBLEScan = BLEDevice::getScan();
   pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks());
-  pBLEScan->setInterval(1349);
-  pBLEScan->setWindow(449);
+  pBLEScan->setInterval(SCAN_INTERVAL);
+  pBLEScan->setWindow(SCAN_WINDOW);
   pBLEScan->setActiveScan(true);
-  pBLEScan->start(5, false);
+  pBLEScan->start(SCAN_DURATION, false);
 
   pinMode(A5, INPUT_PULLUP);
   pinMode(A4, INPUT);
   pinMode(A3, INPUT);
 
-  FastLED.addLeds<WS2812, LED_PIN>(leds, NUM_LEDS);
-  FastLED.setBrightness(5);
+  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
+  FastLED.setBrightness(LED_BRIGHTNESS);
 }
 
 void loop() {
@@ -152,12 +161,16 @@ void loop() {
     Serial.print(" | Button: ");
     Serial.println(bttState);
   } else if (doScan) {
+    leds[0] = CRGB::Green;
     BLEDevice::getScan()->start(0);
   }
   // set the RGB led when connected to the car
   if (deviceConnected) {
     leds[0] = CRGB::Blue;
   } 
+  else {
+    leds[0] = CRGB::Green;
+  }
 
   FastLED.show();
 
