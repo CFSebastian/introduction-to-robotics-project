@@ -140,7 +140,24 @@ void wheelControl(int inpXaxes, int inpYaxes) {
         digitalWrite(L_WHEELS_BACK, 1);
         analogWrite(L_WHEELS_SPEED, -speedLeft);
     }
-
+    //on the spot turn Left 
+    /*if (inpXaxes > X_DEADZONE_MIN && inpXaxes < X_DEADZONE_MAX &&  inpYaxes >= Y_DEADZONE_MAX) {
+      digitalWrite(R_WHEELS_AHEAD, 1);
+      digitalWrite(R_WHEELS_BACK, 0);
+      analogWrite(R_WHEELS_SPEED, map(inpYaxes, Y_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED));
+      digitalWrite(L_WHEELS_AHEAD, 0);
+      digitalWrite(L_WHEELS_BACK, 1);
+      analogWrite(L_WHEELS_SPEED, map(inpYaxes, Y_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED));
+    }
+    // on the spot turn Right 
+    if (inpXaxes > X_DEADZONE_MIN && inpXaxes < X_DEADZONE_MAX && inpYaxes <= Y_DEADZONE_MIN) {
+      digitalWrite(R_WHEELS_AHEAD, 0);
+      digitalWrite(R_WHEELS_BACK, 1);
+      analogWrite(R_WHEELS_SPEED, map(inpYaxes, Y_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED));
+      digitalWrite(L_WHEELS_AHEAD, 1);
+      digitalWrite(L_WHEELS_BACK, 0);
+      analogWrite(L_WHEELS_SPEED, map(inpYaxes, Y_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED));
+    }*/
     // Dead Zone Handling
     if (inpXaxes > X_DEADZONE_MIN && inpXaxes < X_DEADZONE_MAX && inpYaxes > Y_DEADZONE_MIN && inpYaxes < Y_DEADZONE_MAX) {
         digitalWrite(R_WHEELS_AHEAD, 0);
@@ -233,7 +250,6 @@ void loop() {
     // disconnecting
     if (!deviceConnected && oldDeviceConnected) {
         ledRgbSet(0, 1, 0);
-        delay(500); // give the bluetooth stack the chance to get things ready
         pServer->startAdvertising();
         Serial.println("Start advertising");
         oldDeviceConnected = deviceConnected;
