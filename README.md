@@ -45,10 +45,10 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 ### Electronic Schematics
 
 #### Car:
-![plot](./Media/DiagramaMasina.PNG)
+![plot](./Media/Car.PNG)
 
 #### Controller:
-![plot](./Media/SchemaTelecomanda.PNG)
+![plot](./Media/Controller.PNG)
 
 ## Software Design
 At this point in the project( milestone 3), the car and controler can comunicate via Bluetooth Low Energy, the car is moving, all be it not great thaks to the power consuption and primary because the model of the chassis does not allow all  the wheels make contact with the ground, the horn and leds work fine and indicates when it is conected and not.  
