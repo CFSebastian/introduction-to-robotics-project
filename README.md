@@ -86,7 +86,7 @@ TO DO
 
 ### Hardware
 
-**3D Modeling**
+**3D Modeling**:  
 -[Onshape](https://www.onshape.com/en/)
 
 **ESP32-C3 SuperMini**:  
