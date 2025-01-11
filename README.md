@@ -46,7 +46,7 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 #### Controller:
 | Name | Description | Image | Number | Links |
 | ----------- | ----------- | ----------- |----------- | ----------- |
-| ESP32-C3 SuperMini | The microcontroller board for the controller, chosen for its small profile. It reads the input and sends it wirelessly to the car. | [img](./Media/makergo-esp32c3-supermini.jpg) | 1 | [Shop](https://shorturl.at/NS3Yj) |
+| ESP32-C3 SuperMini | The microcontroller board for the controller, chosen for its small profile. It reads the input and sends it wirelessly to the car. | ![img](./Media/makergo-esp32c3-supermini.jpg) | 1 | [Shop](https://shorturl.at/NS3Yj) |
 
 
 #### Car:
