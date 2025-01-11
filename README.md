@@ -41,6 +41,15 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 - **2x 4-Battery Pack**: Power source for the car.
 - **3x 330-ohm resistors**: Used for current limiting.
 
+### Bill Of Materials
+
+#### Controller:
+| Name | Description | Image | Number | Links |
+| ----------- | ----------- | ----------- |----------- | ----------- |
+| ESP32-C3 SuperMini |  | img | 1 | [Shop](https://shorturl.at/NS3Yj) |
+
+
+#### Car:
 
 ### Electronic Schematics
 
@@ -61,7 +70,7 @@ Over all the project does the basics that it suposed to do and all it remains is
 **Bluetooth Low Energy(BLE)**-ESP32 BLE for Arduino  
 **LEDstrips (SWS2812 LED)**-FastLED
 
-#### Video:
+### Video:
 [![Demonstration Video](http://img.youtube.com/vi/ZfmHpDFt6Ck/0.jpg)](https://www.youtube.com/watch?v=ZfmHpDFt6Ck "Demonstration Video")  
 
 ### Calibrations
