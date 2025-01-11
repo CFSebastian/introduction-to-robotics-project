@@ -86,6 +86,9 @@ TO DO
 
 ### Hardware
 
+**3D Modeling**
+-[Onshape](https://www.onshape.com/en/)
+
 **ESP32-C3 SuperMini**:  
 - [ESP32-C3 SuperMini Datasheet](https://dl.artronshop.co.th/ESP32-C3%20SuperMini%20datasheet.pdf)  
 - [ESP32-C3 Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf)  
