@@ -22,25 +22,6 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 
 ## Hardware Design
 
-### Physical Components
-
-#### Controller:
-- **ESP32-C3 SuperMini**: The microcontroller board for the controller, chosen for its small profile. It reads the input and sends it wirelessly to the car.
-- **Joystick module**: Generates input data based on the operator's actions.
-- **WS2812 LED**: Indicates the state of the controller board.
-- **1x 330-ohm resistor**: Used for current limiting.
-- **Small Breadboard**: Facilitates the easy wiring of the components.
-
-#### Car:
-- **ESP32 Devkit V1**: The microcontroller board for the car. It receives input from the controller and instructs the actuators on what to do.
-- **RGB LED**: Indicates the state of the car board.
-- **Breadboard**: Facilitates the easy wiring of the components.
-- **4x Small DC Motors**: The primary actuators that move the car.
-- **L293D**: The H-bridge driver that helps the car board control the motors and protects it from high currents.
-- **Passive Buzzer**: Represents the horn.
-- **2x 4-Battery Pack**: Power source for the car.
-- **3x 330-ohm resistors**: Used for current limiting.
-
 ### Bill Of Materials
 
 #### Controller:
@@ -64,6 +45,25 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 | 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 3 | Links |
 | 4-Battery holder | <img src="./Media/batteryHolder.jpg" alt="drawing" width="200"/> | 1 | Links |
 | 9v battery clip | <img src="./Media/9vClip.jpg" alt="drawing" width="200"/> | 1 | Links |
+
+### Physical Components
+
+#### Controller:
+- **ESP32-C3 SuperMini**: The microcontroller board for the controller, chosen for its small profile. It reads the input and sends it wirelessly to the car.
+- **Joystick module**: Generates input data based on the operator's actions.
+- **WS2812 LED**: Indicates the state of the controller board.
+- **1x 330-ohm resistor**: Used for current limiting.
+- **Small Breadboard**: Facilitates the easy wiring of the components.
+
+#### Car:
+- **ESP32 Devkit V1**: The microcontroller board for the car. It receives input from the controller and instructs the actuators on what to do.
+- **RGB LED**: Indicates the state of the car board.
+- **Breadboard**: Facilitates the easy wiring of the components.
+- **4x Small DC Motors**: The primary actuators that move the car.
+- **L293D**: The H-bridge driver that helps the car board control the motors and protects it from high currents.
+- **Passive Buzzer**: Represents the horn.
+- **2x 4-Battery Pack**: Power source for the car.
+- **3x 330-ohm resistors**: Used for current limiting.
 
 ### Electronic Schematics
 
