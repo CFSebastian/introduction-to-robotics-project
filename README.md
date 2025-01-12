@@ -44,18 +44,26 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 ### Bill Of Materials
 
 #### Controller:
-| Name | Description | Image | Number | Links |
-| ----------- | ----------- | ----------- |----------- | ----------- |
-| ESP32-C3 SuperMini | . | ![img](./Media/makergo-esp32c3-supermini.jpg) | 1 | [Shop](https://shorturl.at/NS3Yj) |
-| Joystick module | Description | Image | 1 | Links |
-| WS2812 LED | Description | Image | 1 | Links |
-| 330-ohm resistor | Description | Image | 1 | Links |
-| Small Breadboard | Description | Image | 1 | Links |
+| Name |  Image | Number | Links |
+| ----------- | ----------- |----------- | ----------- |
+| ESP32-C3 SuperMini | <img src="./Media/makergo-esp32c3-supermini.jpg" alt="drawing" width="200"/> | 1 | [Shop](https://shorturl.at/NS3Yj)<br />[Board Datasheet](https://dl.artronshop.co.th/ESP32-C3%20SuperMini%20datasheet.pdf)<br /> [Chip Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf)   |
+| Joystick module | <img src="./Media/dual-axis-joystick-module-with-button-1-255x191.jpg" alt="drawing" width="200"/> | 1 | Links |
+| WS2812 LED | <img src="./Media/SKU-44120.png" alt="drawing" width="200"/> | 1 | [Datasheet](https://cdn-shop.adafruit.com/datasheets/WS2812.pdf)  |
+| 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 1 | Links |
+| Small Breadboard | <img src="./Media/SmallBreadboard.jpg" alt="drawing" width="200"/> | 1 | Links |
 
 #### Car:
-| Name | Description | Image | Number | Links |
-| ----------- | ----------- | ----------- |----------- | ----------- |
-| Name | Description | Image | Number | Links |
+| Name | Image | Number | Links |
+| ----------- | ----------- |----------- | ----------- |
+| ESP32 Devkit V1 | <img src="./Media/esp32-dev-kit-v1.jpg" alt="drawing" width="200"/> | 1 | [Chip Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)<br >[Pinout Reference](https://lastminuteengineers.com/esp32-pinout-reference/)    |
+| RGB LED | <img src="./Media/rgb-light-emitting-diode.jpg" alt="drawing" width="200"/> | 1 | Links |
+| Breadboard | <img src="./Media/Breadboard.jpg" alt="drawing" width="200"/> | 2 | Links |
+| Small DC Motors | <img src="./Media/MOTOR.jpg" alt="drawing" width="200"/> | 4 | Links |
+| L293D | <img src="./Media/L293D.jpg" alt="drawing" width="200"/> | 1 | [Datasheet](https://www.ti.com/lit/ds/symlink/l293.pdf) |
+| Passive Buzzer | <img src="./Media/buzzer.jpg" alt="drawing" width="200"/> | 1 | Links |
+| 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 3 | Links |
+| 4-Battery holder | <img src="./Media/batteryHolder.jpg" alt="drawing" width="200"/> | 1 | Links |
+| 9v battery clip | <img src="./Media/9vClip.jpg" alt="drawing" width="200"/> | 1 | Links |
 
 ### Electronic Schematics
 
