@@ -110,7 +110,7 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 [![Joystick calibration](http://img.youtube.com/vi/ZaIzt3UZlsc/0.jpg)](https://www.youtube.com/watch?v=ZaIzt3UZlsc "Joystick calibration")
 
 ## Software Design
-At this point in the project( milestone 3), the car and controler can comunicate via Bluetooth Low Energy, the car is moving, all be it not great thaks to the power consuption and primary because the model of the chassis does not allow all  the wheels make contact with the ground, the horn and leds work fine and indicates when it is conected and not.  
+At this point in the project( milestone 3), the car and controler can comunicate via Bluetooth Low Energy, the car is moving, all be it not great thaks to the model of the chassis does not allow all  the wheels make contact with the ground, the horn and leds work fine and indicates when the controller and car are conected or not.  
 Over all the project does the basics that it suposed to do and all it remains is minor fixes.   
 ### Development Environment
 
@@ -135,7 +135,102 @@ The different functionalitys learned in the lab that i used for the project are:
 - Comunications protocols that enables the two mocrocontrolers conect to eachother and help to control difrent modules
 - UART that helps at debugging
 
-### Functionality:
+### Function and code:
+
+This is a function to controll the RGB LED made so i can set the colors more easly
+
+    void ledRgbSet(bool red, bool green, bool blue) {
+    digitalWrite(LED_RGB_R, red);
+    digitalWrite(LED_RGB_G, green);
+    digitalWrite(LED_RGB_B, blue);
+    }
+
+A simple function to control the buzzer when a buttons is pressed
+
+    void hornActivate(int btnPressed) {
+        if (!btnPressed) {
+            tone(BUZZER,400);
+        } else {
+            noTone(BUZZER);
+        }
+    }
+
+The next function controlls the wheels, sending the data to 3 pins for the on each side of the car. First it calculates the speed that needs to be send to the motors, negative speed is backwards, depending on the transmited input, afther that depending on the speed of esch side motors it send which way the motors should rotate and the respective speed. Also when the controller is idle that means the data is in the deadzone, so the motors are turned off.
+
+    void wheelControl(int inpXaxes, int inpYaxes) {
+        int speedRight = 0;
+        int speedLeft = 0;
+
+    // Forward Movement
+      if (inpXaxes <= X_DEADZONE_MIN) {
+          int speed = map(inpXaxes, X_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
+          speedRight = speed;
+          speedLeft = speed;
+  
+          // Adjust for Turning
+          if (inpYaxes <= Y_DEADZONE_MIN) { // Turning Right
+              int turnFactor = map(inpYaxes, Y_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
+              speedLeft = speed;
+              speedRight = speed - turnFactor;
+          } else if (inpYaxes >= Y_DEADZONE_MAX) { // Turning Left
+              int turnFactor = map(inpYaxes, Y_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
+              speedRight = speed;
+              speedLeft = speed - turnFactor;
+          }
+      }
+  
+      // Backward Movement
+      if (inpXaxes >= X_DEADZONE_MAX) {
+          int speed = map(inpXaxes, X_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
+          speedRight = -speed;
+          speedLeft = -speed;
+  
+          // Adjust for Turning
+          if (inpYaxes <= Y_DEADZONE_MIN) { // Turning Right
+              int turnFactor = map(inpYaxes, Y_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
+              speedLeft = -speed;
+              speedRight = -(speed - turnFactor);
+          } else if (inpYaxes >= Y_DEADZONE_MAX) { // Turning Left
+              int turnFactor = map(inpYaxes, Y_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
+              speedRight = -speed;
+              speedLeft = -(speed - turnFactor);
+          }
+      }
+  
+      // Apply Speed to Right Wheels
+      if (speedRight >= 0) {
+          digitalWrite(R_WHEELS_AHEAD, 1);
+          digitalWrite(R_WHEELS_BACK, 0);
+          analogWrite(R_WHEELS_SPEED, speedRight);
+      } else {
+          digitalWrite(R_WHEELS_AHEAD, 0);
+          digitalWrite(R_WHEELS_BACK, 1);
+          analogWrite(R_WHEELS_SPEED, -speedRight);
+      }
+  
+      // Apply Speed to Left Wheels
+      if (speedLeft >= 0) {
+          digitalWrite(L_WHEELS_AHEAD, 1);
+          digitalWrite(L_WHEELS_BACK, 0);
+          analogWrite(L_WHEELS_SPEED, speedLeft);
+      } else {
+          digitalWrite(L_WHEELS_AHEAD, 0);
+          digitalWrite(L_WHEELS_BACK, 1);
+          analogWrite(L_WHEELS_SPEED, -speedLeft);
+      }
+      
+      // Dead Zone Handling
+      if (inpXaxes > X_DEADZONE_MIN && inpXaxes < X_DEADZONE_MAX && inpYaxes > Y_DEADZONE_MIN && inpYaxes < Y_DEADZONE_MAX) {
+          digitalWrite(R_WHEELS_AHEAD, 0);
+          digitalWrite(R_WHEELS_BACK, 0);
+          analogWrite(R_WHEELS_SPEED, MIN_SPEED);
+          digitalWrite(L_WHEELS_AHEAD, 0);
+          digitalWrite(L_WHEELS_BACK, 0);
+          analogWrite(L_WHEELS_SPEED, MIN_SPEED);
+      }
+    }
+
+  The BLE functionality is writen with the help of the ESP32 BLE for Arduino library and it uses at its base the exaples that can be found in the library github. The code does not difer very much, i just override onConnect() and onDisconnect() so it changes a variable that keeps if the divice is connected or not, and i created my service with 3 charactheristics ,with the propertis of read and write, and given them a random UUID with the help of this [UUID generator](https://www.uuidgenerator.net/). As for whitch is the server and whitch is the client, the car is the servers, advertising it service, so it can require the wright data, and the controller is the client that searches for the server service UUID, and transmits the data for the car to operate. 
 
 ### Video:
 [![Demonstration Video](http://img.youtube.com/vi/ZfmHpDFt6Ck/0.jpg)](https://www.youtube.com/watch?v=ZfmHpDFt6Ck "Demonstration Video")  
@@ -147,7 +242,7 @@ I noted them on a paper and the created defines for the joystick taking into aco
 
 ## Conclusions
 
-TO DO
+In conclusion the project works, but its held back due to the weack hardwere conection and 3d designe. That beeing said i learned a lot about difrent aspects of this fiels and I determined to inprove the aspects that ive lacked in this project. I look forward to new project where i hope to put to good use what ive learned.
 
 ## Bibliography/Resources
 
