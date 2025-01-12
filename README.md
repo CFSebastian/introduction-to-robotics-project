@@ -24,16 +24,17 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 
 ### Project State
 
-  At this point the project has all the componets are conected between them and mouted on the chassis for the ones on the car. The boards can be programed, and the joystick read ons the serial port for the controller. The desine of the car chassis needs to be updated so that all the wheels can make contact with the floor.
+At this point, all the components of the project are connected and mounted on the chassis for the car. The boards can be programmed, and the joystick can be read through the serial port on the controller. The design of the car chassis needs to be updated to ensure that all wheels make contact with the floor.
+
 ### Bill Of Materials
 
 #### Controller:
 | Name |  Image | Number | Links |
 | ----------- | ----------- |----------- | ----------- |
 | ESP32-C3 SuperMini | <img src="./Media/makergo-esp32c3-supermini.jpg" alt="drawing" width="200"/> | 1 | [Shop](https://shorturl.at/NS3Yj)<br />[Board Datasheet](https://dl.artronshop.co.th/ESP32-C3%20SuperMini%20datasheet.pdf)<br /> [Chip Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf)   |
-| Joystick module | <img src="./Media/dual-axis-joystick-module-with-button-1-255x191.jpg" alt="drawing" width="200"/> | 1 |  |
+| Joystick Module | <img src="./Media/dual-axis-joystick-module-with-button-1-255x191.jpg" alt="drawing" width="200"/> | 1 |  |
 | WS2812 LED | <img src="./Media/SKU-44120.png" alt="drawing" width="200"/> | 1 | [Datasheet](https://cdn-shop.adafruit.com/datasheets/WS2812.pdf)  |
-| 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 1 |  |
+| 330-ohm Resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 1 |  |
 | Small Breadboard | <img src="./Media/SmallBreadboard.jpg" alt="drawing" width="200"/> | 1 |  |
 
 #### Car:
@@ -45,56 +46,55 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 | Small DC Motors | <img src="./Media/MOTOR.jpg" alt="drawing" width="200"/> | 4 |  |
 | L293D | <img src="./Media/L293D.jpg" alt="drawing" width="200"/> | 1 | [Datasheet](https://www.ti.com/lit/ds/symlink/l293.pdf) |
 | Passive Buzzer | <img src="./Media/buzzer.jpg" alt="drawing" width="200"/> | 1 |  |
-| 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 3 |  |
-| 4-Battery holder | <img src="./Media/batteryHolder.jpg" alt="drawing" width="200"/> | 1 |  |
-| 9v battery clip | <img src="./Media/9vClip.jpg" alt="drawing" width="200"/> | 1 |  |
+| 330-ohm Resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 3 |  |
+| 4-Battery Holder | <img src="./Media/batteryHolder.jpg" alt="drawing" width="200"/> | 1 |  |
+| 9V Battery Clip | <img src="./Media/9vClip.jpg" alt="drawing" width="200"/> | 1 |  |
 
 ### Physical Components
 
 #### Controller:
 - **ESP32-C3 SuperMini**:  
-  - The microcontroller board for the controller, chosen for its small profile. It reads the input and sends it wirelessly to the car.
-  - The USV-C port is used for supplying power to the board
-  - The 3.3V pin is used to power the joystick
-  - GIPO 3,4 are used to read the analog inputs from the joysticks X and Y axes
-  - GPIO 21 is used the read the joystick button
-  - GPIO 20/ RX pin is used to control the WS2812 LED 
-- **Joystick module**:
+  - The microcontroller board for the controller, chosen for its small profile. It reads input and sends it wirelessly to the car.
+  - The USB-C port is used to supply power to the board.
+  - The 3.3V pin powers the joystick.
+  - GPIO 3 and 4 read the analog inputs from the joystick's X and Y axes.
+  - GPIO 21 reads the joystick button.
+  - GPIO 20 (RX pin) controls the WS2812 LED. 
+- **Joystick Module**:
   - Generates input data based on the operator's actions.
-  - 5V pin is uset to powe up the joystick with 3.3V, we use 3.3V because the ESP32-C3 SuperMini uses 3.3V for its logic, if we use 5V it would dewcalate values for the 2 axes
-  - URx and URy send the data for the x and y axes
-  - SW data from the buton in the module
+  - The 5V pin powers the joystick with 3.3V (we use 3.3V because the ESP32-C3 SuperMini uses 3.3V logic; using 5V would distort the axis values).
+  - URx and URy send the data for the X and Y axes.
+  - SW outputs data from the module's button.
 - **WS2812 LED**:
   - Indicates the state of the controller board.
-  - 5V and GND for powering the LED
-  - DI( data in) for transmiting data to the internal microcontroler, conect this pin via 330 ohm resistor to protect it
+  - The 5V and GND pins power the LED.
+  - The DI (data in) pin transmits data to the internal microcontroller. Connect this pin via a 330-ohm resistor for protection.
 
 #### Car:
 - **ESP32 Devkit V1**:
-  - The microcontroller board for the car. It receives input from the controller and instructs the actuators on what to do.
-  - Vin and GND for powering the board
-  - GPIO 23, 24 and 25 are for controling the RGB LED, these are conected via a 220 ohm resistors for protection
-  - GPIO 22 is for controling the buzzer via PMW
-  - GPIO 9, 10 and GPIO 14, 15 are used to switch the GND an VIN for the mototrs on the lesft respectivily right side o the car
-  - GPIO 11 and 21 are used to control the speed of the motor on the left and right side of the car with PMW signals
+  - The microcontroller board for the car. It receives input from the controller and instructs the actuators.
+  - Vin and GND power the board.
+  - GPIO 23, 24, and 25 control the RGB LED, connected via 220-ohm resistors for protection.
+  - GPIO 22 controls the buzzer using PWM.
+  - GPIO 9, 10, 14, and 15 switch the GND and VIN for the motors on the left and right sides of the car, respectively.
+  - GPIO 11 and 21 control the speed of the left and right motors with PWM signals.
 - **RGB LED**:
   - Indicates the state of the car board.
-  - it has 3 anodes and 1 catode.
+  - It has three anodes and one cathode.
 - **L293D**:
-  - The H-bridge driver that helps the car board control the motors and protects it from high currents.
-  - There is a loss of oproximally 1V on this module
-  - Can supor input voltage anywhere between 4.5 to 36V
-  - VCC1/ VSS gives power to the logic circuit
-  - VS /VCC2 powers the motores 
-  - IN/A 1, IN/A 2 respectivily IN/A 3, IN/A 4 receive power to determin which OUT pin represents the VCC and GND for the motores. There is not defined a state when both pins in apir are high
-  - ENA/ EN1,2 and ENB/ EN3,4 are pins controled via PMW pins to determin how much power is send to the motors
-  - OUT/Y 1,2 and OUT/Y 3,4 are the pins connected to the motors, depending the other pins one of the pins in these pairs can be GND or VCC, and the power throug the can variate
+  - An H-bridge driver that controls the motors and protects the board from high currents.
+  - Loses approximately 1V in operation.
+  - Supports input voltages between 4.5V and 36V.
+  - VCC1/VSS powers the logic circuit.
+  - VS/VCC2 powers the motors.
+  - IN1/A, IN2/A, IN3/A, and IN4/A determine the OUT pins' states, defining which pins provide VCC or GND for the motors. Both pins in a pair should not be high simultaneously.
+  - ENA/EN1,2 and ENB/EN3,4 are controlled by PWM pins to regulate motor power.
+  - OUT1/Y, OUT2/Y, OUT3/Y, and OUT4/Y connect to the motors; depending on other pins, one in each pair acts as GND or VCC, with variable power.
 - **Passive Buzzer**:
   - Represents the horn.
-  - The + pin represent the input that can be controled via PMW and the source of  power
+  - The "+" pin is the input controlled via PWM and serves as the power source.
 - **4x Small DC Motors**:
-  - The primary actuators that move the car.
-
+  - The primary actuators for moving the car.
 
 ### Electronic Schematics
 
@@ -110,139 +110,148 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 [![Joystick calibration](http://img.youtube.com/vi/ZaIzt3UZlsc/0.jpg)](https://www.youtube.com/watch?v=ZaIzt3UZlsc "Joystick calibration")
 
 ## Software Design
-At this point in the project( milestone 3), the car and controler can comunicate via Bluetooth Low Energy, the car is moving, all be it not great thaks to the model of the chassis does not allow all  the wheels make contact with the ground, the horn and leds work fine and indicates when the controller and car are conected or not.  
-Over all the project does the basics that it suposed to do and all it remains is minor fixes.   
+
+At this point in the project (milestone 3), the car and controller can communicate via Bluetooth Low Energy. The car moves, although not very effectively, due to the chassis design, which does not allow all the wheels to make proper contact with the ground. The horn and LEDs work fine, indicating whether the controller and car are connected or not.  
+Overall, the project achieves its basic goals, and only minor fixes remain.
+
 ### Development Environment
 
 **IDE**: Arduino IDE
 
-### Librariest:
-**Bluetooth Low Energy(BLE)**-ESP32 BLE for Arduino, the one avaible in the library arduino-esp32. I chose this library becouse the re are many examples and turotials with it, even the datasheet of the esp32 super mini indicates to use this library for BLE. This library also provides a more easy way to use BLE throu classes, compared to making everything from 0 with the esp IDF
+### Libraries:
+- **Bluetooth Low Energy (BLE)**: ESP32 BLE for Arduino, available in the Arduino-ESP32 library. I chose this library because there are many examples and tutorials available, and even the ESP32 SuperMini datasheet recommends using this library for BLE. Additionally, it provides an easier way to use BLE through classes, compared to building everything from scratch using the ESP-IDF.
+- **LED Strips (WS2812 LED)**: FastLED. This library is very popular, with many examples and materials available. It also supports the WS2812 LED module used in this project.
 
-**LEDstrips (SWS2812 LED)**-FastLED. This library si very populare, do there are amlot of exemples and materials, and it suport the WS2812 LED module that i use in the project.
+### New Elements in the Project:
 
-### New elements int the project:
+- The first and most interesting element for me is Bluetooth Low Energy (BLE). BLE is a Bluetooth technology introduced in 2010 with Bluetooth 4.0. It divides the band into 40 channels with a spacing of 2 MHz, compared to classic Bluetooth, which divides the band into 79 channels with a spacing of 1 MHz.
+- LED strip control via the RX pin. It is fascinating to see how we can control a series of RGB LEDs with just four pins (VCC, GND, DI, DO) to produce different color patterns.
+- Controlling motors can range from very simple to highly complex, depending on requirements. It involves different inputs, external microcontrollers, and gear ratios to achieve the desired results.
 
-- The first and most interesting element for me is the Bluetooth Low Energy(BLE for short), it a bluetooth technology that apeared in 2010 with Bluetooth 4.0. It divides the band into 40 channels, with a spacing of 2 MHz comparatively to classic bluetooth that divides the band into 79 channels, with a spacing of 1 MHz.
-- Led band control via the RX pin. It is intresting to see how we can controle an series RGB LEDs with just 4 pins( VCC, GND, DI, DO), obtaining difrent orders of colors.
-- Controloing motors can be very simple or complicated depending on what you need, i takes difrents inputs, exetnal microcontrolres and gear ratios to obtain what you need. 
+### Lab Functionalities:
 
-### Lab functionalitys:
+The various functionalities learned in the lab that were applied to the project include:
+- PWM for controlling different components of the car, such as the buzzer.
+- ADC for reading analog values from the controller.
+- Communication protocols that enable the two microcontrollers to connect and control different modules.
+- UART for debugging purposes.
 
-The different functionalitys learned in the lab that i used for the project are:
-- PMW for controlling difrent parts of the car like the buzzer
-- ADC for reading analog values from the controler
-- Comunications protocols that enables the two mocrocontrolers conect to eachother and help to control difrent modules
-- UART that helps at debugging
+### Functions and Code:
 
-### Function and code:
+This is a function to control the RGB LED, designed to make setting colors easier:
 
-This is a function to controll the RGB LED made so i can set the colors more easly
-
-    void ledRgbSet(bool red, bool green, bool blue) {
+```cpp
+void ledRgbSet(bool red, bool green, bool blue) {
     digitalWrite(LED_RGB_R, red);
     digitalWrite(LED_RGB_G, green);
     digitalWrite(LED_RGB_B, blue);
+}
+```
+
+A simple function to control the buzzer when a button is pressed:
+
+```cpp
+void hornActivate(int btnPressed) {
+    if (!btnPressed) {
+        tone(BUZZER, 400);
+    } else {
+        noTone(BUZZER);
     }
+}
+```
 
-A simple function to control the buzzer when a buttons is pressed
+The following function controls the wheels by sending data to three pins for each side of the car. It calculates the speed to send to the motors (negative speeds indicate backward movement) based on the input. Depending on the speed of each side's motors, it determines the direction of rotation and speed. When the controller is idle (data is in the dead zone), the motors are turned off.
 
-    void hornActivate(int btnPressed) {
-        if (!btnPressed) {
-            tone(BUZZER,400);
-        } else {
-            noTone(BUZZER);
+```cpp
+void wheelControl(int inpXaxes, int inpYaxes) {
+    int speedRight = 0;
+    int speedLeft = 0;
+
+    // Forward Movement
+    if (inpXaxes <= X_DEADZONE_MIN) {
+        int speed = map(inpXaxes, X_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
+        speedRight = speed;
+        speedLeft = speed;
+
+        // Adjust for Turning
+        if (inpYaxes <= Y_DEADZONE_MIN) { // Turning Right
+            int turnFactor = map(inpYaxes, Y_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
+            speedLeft = speed;
+            speedRight = speed - turnFactor;
+        } else if (inpYaxes >= Y_DEADZONE_MAX) { // Turning Left
+            int turnFactor = map(inpYaxes, Y_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
+            speedRight = speed;
+            speedLeft = speed - turnFactor;
         }
     }
 
-The next function controlls the wheels, sending the data to 3 pins for the on each side of the car. First it calculates the speed that needs to be send to the motors, negative speed is backwards, depending on the transmited input, afther that depending on the speed of esch side motors it send which way the motors should rotate and the respective speed. Also when the controller is idle that means the data is in the deadzone, so the motors are turned off.
+    // Backward Movement
+    if (inpXaxes >= X_DEADZONE_MAX) {
+        int speed = map(inpXaxes, X_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
+        speedRight = -speed;
+        speedLeft = -speed;
 
-    void wheelControl(int inpXaxes, int inpYaxes) {
-        int speedRight = 0;
-        int speedLeft = 0;
-
-    // Forward Movement
-      if (inpXaxes <= X_DEADZONE_MIN) {
-          int speed = map(inpXaxes, X_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
-          speedRight = speed;
-          speedLeft = speed;
-  
-          // Adjust for Turning
-          if (inpYaxes <= Y_DEADZONE_MIN) { // Turning Right
-              int turnFactor = map(inpYaxes, Y_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
-              speedLeft = speed;
-              speedRight = speed - turnFactor;
-          } else if (inpYaxes >= Y_DEADZONE_MAX) { // Turning Left
-              int turnFactor = map(inpYaxes, Y_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
-              speedRight = speed;
-              speedLeft = speed - turnFactor;
-          }
-      }
-  
-      // Backward Movement
-      if (inpXaxes >= X_DEADZONE_MAX) {
-          int speed = map(inpXaxes, X_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
-          speedRight = -speed;
-          speedLeft = -speed;
-  
-          // Adjust for Turning
-          if (inpYaxes <= Y_DEADZONE_MIN) { // Turning Right
-              int turnFactor = map(inpYaxes, Y_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
-              speedLeft = -speed;
-              speedRight = -(speed - turnFactor);
-          } else if (inpYaxes >= Y_DEADZONE_MAX) { // Turning Left
-              int turnFactor = map(inpYaxes, Y_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
-              speedRight = -speed;
-              speedLeft = -(speed - turnFactor);
-          }
-      }
-  
-      // Apply Speed to Right Wheels
-      if (speedRight >= 0) {
-          digitalWrite(R_WHEELS_AHEAD, 1);
-          digitalWrite(R_WHEELS_BACK, 0);
-          analogWrite(R_WHEELS_SPEED, speedRight);
-      } else {
-          digitalWrite(R_WHEELS_AHEAD, 0);
-          digitalWrite(R_WHEELS_BACK, 1);
-          analogWrite(R_WHEELS_SPEED, -speedRight);
-      }
-  
-      // Apply Speed to Left Wheels
-      if (speedLeft >= 0) {
-          digitalWrite(L_WHEELS_AHEAD, 1);
-          digitalWrite(L_WHEELS_BACK, 0);
-          analogWrite(L_WHEELS_SPEED, speedLeft);
-      } else {
-          digitalWrite(L_WHEELS_AHEAD, 0);
-          digitalWrite(L_WHEELS_BACK, 1);
-          analogWrite(L_WHEELS_SPEED, -speedLeft);
-      }
-      
-      // Dead Zone Handling
-      if (inpXaxes > X_DEADZONE_MIN && inpXaxes < X_DEADZONE_MAX && inpYaxes > Y_DEADZONE_MIN && inpYaxes < Y_DEADZONE_MAX) {
-          digitalWrite(R_WHEELS_AHEAD, 0);
-          digitalWrite(R_WHEELS_BACK, 0);
-          analogWrite(R_WHEELS_SPEED, MIN_SPEED);
-          digitalWrite(L_WHEELS_AHEAD, 0);
-          digitalWrite(L_WHEELS_BACK, 0);
-          analogWrite(L_WHEELS_SPEED, MIN_SPEED);
-      }
+        // Adjust for Turning
+        if (inpYaxes <= Y_DEADZONE_MIN) { // Turning Right
+            int turnFactor = map(inpYaxes, Y_DEADZONE_MIN, AXIS_MIN, MIN_SPEED, MAX_SPEED);
+            speedLeft = -speed;
+            speedRight = -(speed - turnFactor);
+        } else if (inpYaxes >= Y_DEADZONE_MAX) { // Turning Left
+            int turnFactor = map(inpYaxes, Y_DEADZONE_MAX, AXIS_MAX, MIN_SPEED, MAX_SPEED);
+            speedRight = -speed;
+            speedLeft = -(speed - turnFactor);
+        }
     }
 
-  The BLE functionality is writen with the help of the ESP32 BLE for Arduino library and it uses at its base the exaples that can be found in the library github. The code does not difer very much, i just override onConnect() and onDisconnect() so it changes a variable that keeps if the divice is connected or not, and i created my service with 3 charactheristics ,with the propertis of read and write, and given them a random UUID with the help of this [UUID generator](https://www.uuidgenerator.net/). As for whitch is the server and whitch is the client, the car is the servers, advertising it service, so it can require the wright data, and the controller is the client that searches for the server service UUID, and transmits the data for the car to operate. 
+    // Apply Speed to Right Wheels
+    if (speedRight >= 0) {
+        digitalWrite(R_WHEELS_AHEAD, 1);
+        digitalWrite(R_WHEELS_BACK, 0);
+        analogWrite(R_WHEELS_SPEED, speedRight);
+    } else {
+        digitalWrite(R_WHEELS_AHEAD, 0);
+        digitalWrite(R_WHEELS_BACK, 1);
+        analogWrite(R_WHEELS_SPEED, -speedRight);
+    }
+
+    // Apply Speed to Left Wheels
+    if (speedLeft >= 0) {
+        digitalWrite(L_WHEELS_AHEAD, 1);
+        digitalWrite(L_WHEELS_BACK, 0);
+        analogWrite(L_WHEELS_SPEED, speedLeft);
+    } else {
+        digitalWrite(L_WHEELS_AHEAD, 0);
+        digitalWrite(L_WHEELS_BACK, 1);
+        analogWrite(L_WHEELS_SPEED, -speedLeft);
+    }
+
+    // Dead Zone Handling
+    if (inpXaxes > X_DEADZONE_MIN && inpXaxes < X_DEADZONE_MAX && inpYaxes > Y_DEADZONE_MIN && inpYaxes < Y_DEADZONE_MAX) {
+        digitalWrite(R_WHEELS_AHEAD, 0);
+        digitalWrite(R_WHEELS_BACK, 0);
+        analogWrite(R_WHEELS_SPEED, MIN_SPEED);
+        digitalWrite(L_WHEELS_AHEAD, 0);
+        digitalWrite(L_WHEELS_BACK, 0);
+        analogWrite(L_WHEELS_SPEED, MIN_SPEED);
+    }
+}
+```
+
+The BLE functionality was implemented using the ESP32 BLE for Arduino library. The code is based on examples from the library's GitHub repository. I customized the `onConnect()` and `onDisconnect()` methods to update a variable tracking the connection status. I also created a custom service with three characteristics, each assigned a random UUID generated using this [UUID generator](https://www.uuidgenerator.net/).  
+In this setup, the car is the server, advertising its service and requesting the right data, while the controller acts as the client, searching for the server's service UUID and transmitting the data needed for car operation.
 
 ### Video:
-[![Demonstration Video](http://img.youtube.com/vi/ZfmHpDFt6Ck/0.jpg)](https://www.youtube.com/watch?v=ZfmHpDFt6Ck "Demonstration Video")  
+[![Demonstration Video](http://img.youtube.com/vi/ZfmHpDFt6Ck/0.jpg)](https://www.youtube.com/watch?v=ZfmHpDFt6Ck "Demonstration Video")
 
 ### Calibrations
-I calibrated the joystick with the serial monitor, observing where the dead zone is for the x and y axes, and their max and min values.  
-I noted them on a paper and the created defines for the joystick taking into acount some tolerances.
 
+I calibrated the joystick using the serial monitor, observing the dead zones for the X and Y axes and their respective maximum and minimum values.  
+These values were noted and used to define joystick parameters, considering some tolerances.
 
 ## Conclusions
 
-In conclusion the project works, but its held back due to the weack hardwere conection and 3d designe. That beeing said i learned a lot about difrent aspects of this fiels and I determined to inprove the aspects that ive lacked in this project. I look forward to new project where i hope to put to good use what ive learned.
+In conclusion, the project works but is hindered by weak hardware connections and a flawed 3D design. Despite this, I have learned a lot about different aspects of this field, and I am determined to improve on the weaknesses identified in this project. I look forward to future projects where I can put what I’ve learned to good use.
+
 
 ## Bibliography/Resources
 
