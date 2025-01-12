@@ -28,42 +28,69 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 | Name |  Image | Number | Links |
 | ----------- | ----------- |----------- | ----------- |
 | ESP32-C3 SuperMini | <img src="./Media/makergo-esp32c3-supermini.jpg" alt="drawing" width="200"/> | 1 | [Shop](https://shorturl.at/NS3Yj)<br />[Board Datasheet](https://dl.artronshop.co.th/ESP32-C3%20SuperMini%20datasheet.pdf)<br /> [Chip Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf)   |
-| Joystick module | <img src="./Media/dual-axis-joystick-module-with-button-1-255x191.jpg" alt="drawing" width="200"/> | 1 | Links |
+| Joystick module | <img src="./Media/dual-axis-joystick-module-with-button-1-255x191.jpg" alt="drawing" width="200"/> | 1 |  |
 | WS2812 LED | <img src="./Media/SKU-44120.png" alt="drawing" width="200"/> | 1 | [Datasheet](https://cdn-shop.adafruit.com/datasheets/WS2812.pdf)  |
-| 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 1 | Links |
-| Small Breadboard | <img src="./Media/SmallBreadboard.jpg" alt="drawing" width="200"/> | 1 | Links |
+| 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 1 |  |
+| Small Breadboard | <img src="./Media/SmallBreadboard.jpg" alt="drawing" width="200"/> | 1 |  |
 
 #### Car:
 | Name | Image | Number | Links |
 | ----------- | ----------- |----------- | ----------- |
 | ESP32 Devkit V1 | <img src="./Media/esp32-dev-kit-v1.jpg" alt="drawing" width="200"/> | 1 | [Chip Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)<br >[Pinout Reference](https://lastminuteengineers.com/esp32-pinout-reference/)    |
-| RGB LED | <img src="./Media/rgb-light-emitting-diode.jpg" alt="drawing" width="200"/> | 1 | Links |
-| Breadboard | <img src="./Media/Breadboard.jpg" alt="drawing" width="200"/> | 2 | Links |
-| Small DC Motors | <img src="./Media/MOTOR.jpg" alt="drawing" width="200"/> | 4 | Links |
+| RGB LED | <img src="./Media/rgb-light-emitting-diode.jpg" alt="drawing" width="200"/> | 1 |  |
+| Breadboard | <img src="./Media/Breadboard.jpg" alt="drawing" width="200"/> | 2 |  |
+| Small DC Motors | <img src="./Media/MOTOR.jpg" alt="drawing" width="200"/> | 4 |  |
 | L293D | <img src="./Media/L293D.jpg" alt="drawing" width="200"/> | 1 | [Datasheet](https://www.ti.com/lit/ds/symlink/l293.pdf) |
-| Passive Buzzer | <img src="./Media/buzzer.jpg" alt="drawing" width="200"/> | 1 | Links |
-| 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 3 | Links |
-| 4-Battery holder | <img src="./Media/batteryHolder.jpg" alt="drawing" width="200"/> | 1 | Links |
-| 9v battery clip | <img src="./Media/9vClip.jpg" alt="drawing" width="200"/> | 1 | Links |
+| Passive Buzzer | <img src="./Media/buzzer.jpg" alt="drawing" width="200"/> | 1 |  |
+| 330-ohm resistor | <img src="./Media/resistor.jpg" alt="drawing" width="200"/> | 3 |  |
+| 4-Battery holder | <img src="./Media/batteryHolder.jpg" alt="drawing" width="200"/> | 1 |  |
+| 9v battery clip | <img src="./Media/9vClip.jpg" alt="drawing" width="200"/> | 1 |  |
 
 ### Physical Components
 
 #### Controller:
-- **ESP32-C3 SuperMini**: The microcontroller board for the controller, chosen for its small profile. It reads the input and sends it wirelessly to the car.
-- **Joystick module**: Generates input data based on the operator's actions.
-- **WS2812 LED**: Indicates the state of the controller board.
-- **1x 330-ohm resistor**: Used for current limiting.
-- **Small Breadboard**: Facilitates the easy wiring of the components.
+- **ESP32-C3 SuperMini**:  
+  - The microcontroller board for the controller, chosen for its small profile. It reads the input and sends it wirelessly to the car.
+  - The USV-C port is used for supplying power to the board
+  - The 3.3V pin is used to power the joystick
+  - GIPO 3,4 are used to read the analog inputs from the joysticks X and Y axes
+  - GPIO 21 is used the read the joystick button
+  - GPIO 20/ RX pin is used to control the WS2812 LED 
+- **Joystick module**:
+  - Generates input data based on the operator's actions.
+  - 5V pin is uset to powe up the joystick with 3.3V, we use 3.3V because the ESP32-C3 SuperMini uses 3.3V for its logic, if we use 5V it would dewcalate values for the 2 axes
+  - URx and URy send the data for the x and y axes
+  - SW data from the buton in the module
+- **WS2812 LED**:
+  - Indicates the state of the controller board.
+  - 5V and GND for powering the LED
+  - DI( data in) for transmiting data to the internal microcontroler, conect this pin via 330 ohm resistor to protect it
 
 #### Car:
-- **ESP32 Devkit V1**: The microcontroller board for the car. It receives input from the controller and instructs the actuators on what to do.
-- **RGB LED**: Indicates the state of the car board.
-- **Breadboard**: Facilitates the easy wiring of the components.
-- **4x Small DC Motors**: The primary actuators that move the car.
-- **L293D**: The H-bridge driver that helps the car board control the motors and protects it from high currents.
-- **Passive Buzzer**: Represents the horn.
-- **2x 4-Battery Pack**: Power source for the car.
-- **3x 330-ohm resistors**: Used for current limiting.
+- **ESP32 Devkit V1**:
+  - The microcontroller board for the car. It receives input from the controller and instructs the actuators on what to do.
+  - Vin and GND for powering the board
+  - GPIO 23, 24 and 25 are for controling the RGB LED, these are conected via a 220 ohm resistors for protection
+  - GPIO 22 is for controling the buzzer via PMW
+  - GPIO 9, 10 and GPIO 14, 15 are used to switch the GND an VIN for the mototrs on the lesft respectivily right side o the car
+  - GPIO 11 and 21 are used to control the speed of the motor on the left and right side of the car with PMW signals
+- **RGB LED**:
+  - Indicates the state of the car board.
+  - it has 3 anodes and 1 catode.
+- **L293D**:
+  - The H-bridge driver that helps the car board control the motors and protects it from high currents.
+  - There is a loss of oproximally 1V on this module
+  - VCC1/ VSS gives power to the logic circuit
+  - VS /VCC2 powers the motores 
+  - IN/A 1, IN/A 2 respectivily IN/A 3, IN/A 4 receive power to determin which OUT pin represents the VCC and GND for the motores. There is not defined a state when both pins in apir are high
+  - ENA/ EN1,2 and ENB/ EN3,4 are pins controled via PMW pins to determin how much power is send to the motors
+  - OUT/Y 1,2 and OUT/Y 3,4 are the pins connected to the motors, depending the other pins one of the pins in these pairs can be GND or VCC, and the power throug the can variate
+- **Passive Buzzer**:
+  - Represents the horn.
+  - The + pin represent the input that can be controled via PMW and the source of  power
+- **4x Small DC Motors**:
+  - The primary actuators that move the car.
+
 
 ### Electronic Schematics
 
@@ -72,6 +99,10 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 
 #### Controller:
 ![plot](./Media/Controller.PNG)
+
+#### Images and prove that a component works:
+
+[![Joystick calibration](http://img.youtube.com/vi/ZaIzt3UZlsc/0.jpg)](https://www.youtube.com/watch?v=ZaIzt3UZlsc "Joystick calibration")
 
 ## Software Design
 At this point in the project( milestone 3), the car and controler can comunicate via Bluetooth Low Energy, the car is moving, all be it not great thaks to the power consuption and primary because the model of the chassis does not allow all  the wheels make contact with the ground, the horn and leds work fine and indicates when it is conected and not.  
