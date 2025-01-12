@@ -22,6 +22,9 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 
 ## Hardware Design
 
+### Project State
+
+  At this point the project has all the componets are conected between them and mouted on the chassis for the ones on the car. The boards can be programed, and the joystick read ons the serial port for the controller. The desine of the car chassis needs to be updated so that all the wheels can make contact with the floor.
 ### Bill Of Materials
 
 #### Controller:
@@ -80,6 +83,7 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 - **L293D**:
   - The H-bridge driver that helps the car board control the motors and protects it from high currents.
   - There is a loss of oproximally 1V on this module
+  - Can supor input voltage anywhere between 4.5 to 36V
   - VCC1/ VSS gives power to the logic circuit
   - VS /VCC2 powers the motores 
   - IN/A 1, IN/A 2 respectivily IN/A 3, IN/A 4 receive power to determin which OUT pin represents the VCC and GND for the motores. There is not defined a state when both pins in apir are high
@@ -101,7 +105,8 @@ For us, it has been a stepping stone toward more advanced projects and a valuabl
 ![plot](./Media/Controller.PNG)
 
 #### Images and prove that a component works:
-
+![plot](./Media/Controler.jpg)
+![plot](./Media/Car.jpg)
 [![Joystick calibration](http://img.youtube.com/vi/ZaIzt3UZlsc/0.jpg)](https://www.youtube.com/watch?v=ZaIzt3UZlsc "Joystick calibration")
 
 ## Software Design
@@ -112,8 +117,25 @@ Over all the project does the basics that it suposed to do and all it remains is
 **IDE**: Arduino IDE
 
 ### Librariest:
-**Bluetooth Low Energy(BLE)**-ESP32 BLE for Arduino  
-**LEDstrips (SWS2812 LED)**-FastLED
+**Bluetooth Low Energy(BLE)**-ESP32 BLE for Arduino, the one avaible in the library arduino-esp32. I chose this library becouse the re are many examples and turotials with it, even the datasheet of the esp32 super mini indicates to use this library for BLE. This library also provides a more easy way to use BLE throu classes, compared to making everything from 0 with the esp IDF
+
+**LEDstrips (SWS2812 LED)**-FastLED. This library si very populare, do there are amlot of exemples and materials, and it suport the WS2812 LED module that i use in the project.
+
+### New elements int the project:
+
+- The first and most interesting element for me is the Bluetooth Low Energy(BLE for short), it a bluetooth technology that apeared in 2010 with Bluetooth 4.0. It divides the band into 40 channels, with a spacing of 2 MHz comparatively to classic bluetooth that divides the band into 79 channels, with a spacing of 1 MHz.
+- Led band control via the RX pin. It is intresting to see how we can controle an series RGB LEDs with just 4 pins( VCC, GND, DI, DO), obtaining difrent orders of colors.
+- Controloing motors can be very simple or complicated depending on what you need, i takes difrents inputs, exetnal microcontrolres and gear ratios to obtain what you need. 
+
+### Lab functionalitys:
+
+The different functionalitys learned in the lab that i used for the project are:
+- PMW for controlling difrent parts of the car like the buzzer
+- ADC for reading analog values from the controler
+- Comunications protocols that enables the two mocrocontrolers conect to eachother and help to control difrent modules
+- UART that helps at debugging
+
+### Functionality:
 
 ### Video:
 [![Demonstration Video](http://img.youtube.com/vi/ZfmHpDFt6Ck/0.jpg)](https://www.youtube.com/watch?v=ZfmHpDFt6Ck "Demonstration Video")  
@@ -121,7 +143,7 @@ Over all the project does the basics that it suposed to do and all it remains is
 ### Calibrations
 I calibrated the joystick with the serial monitor, observing where the dead zone is for the x and y axes, and their max and min values.  
 I noted them on a paper and the created defines for the joystick taking into acount some tolerances.
-[![Joystick calibration](http://img.youtube.com/vi/ZaIzt3UZlsc/0.jpg)](https://www.youtube.com/watch?v=ZaIzt3UZlsc "Joystick calibration")
+
 
 ## Conclusions
 
@@ -162,6 +184,7 @@ TO DO
 - [BLE materials+examples](https://dronebotworkshop.com/esp32-bluetooth/)
 - [BLE materials+examples](https://github.com/mo-thunderz)
 - [BLE libraries](https://github.com/espressif/arduino-esp32/tree/master/libraries/BLE)
+- [UUID generator](https://www.uuidgenerator.net/)
 
 **FastLED**:
 - [materials+examples](https://racheldebarros.com/arduino-projects/how-to-use-fastled-with-arduino-to-program-led-strips/)
