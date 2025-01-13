@@ -241,7 +241,7 @@ The BLE functionality was implemented using the ESP32 BLE for Arduino library. T
 In this setup, the car is the server, advertising its service and requesting the right data, while the controller acts as the client, searching for the server's service UUID and transmitting the data needed for car operation.
 
 ### Video:
-[![Demonstration Video](http://img.youtube.com/vi/ZfmHpDFt6Ck/0.jpg)](https://www.youtube.com/watch?v=ZfmHpDFt6Ck "Demonstration Video")
+[![Demonstration Video](http://img.youtube.com/vi/Zph5Vruc8oc/0.jpg)](https://www.youtube.com/watch?v=Zph5Vruc8oc)
 
 ### Calibrations
 
