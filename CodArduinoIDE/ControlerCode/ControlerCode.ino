@@ -2,9 +2,13 @@
 #include "BLEDevice.h"
 
 #define BAUD_RATE 115200
+
+// Analog input pins for joystick and button
 #define A5 0
 #define A4 4
 #define A3 3
+
+// LED configuration
 #define NUM_LEDS 1
 #define LED_PIN 20  
 #define LED_BRIGHTNESS 5
@@ -15,9 +19,9 @@
 #define SCAN_WINDOW 449
 #define SCAN_DURATION 5
 
-
-
+// Array to hold the LED objects
 CRGB leds[NUM_LEDS];
+
 int xVal;
 int yVal;
 int bttState;
@@ -28,6 +32,7 @@ static BLEUUID xAxesUUID("02732da3-bf6d-43e1-a0bc-a61e69c299b9");
 static BLEUUID yAxesUUID("4954805c-f7bd-4a95-a0ec-0e2a11453c36");
 static BLEUUID btnUUID("c03ea1d4-4c2f-469f-be40-df90304f00c1");
 
+// BLE connection and state variables
 static boolean doConnect = false;
 static boolean connected = false;
 static boolean doScan = false;
@@ -39,6 +44,7 @@ static BLERemoteCharacteristic *pRemoteCharX;
 static BLERemoteCharacteristic *pRemoteCharY;
 static BLERemoteCharacteristic *pRemoteCharBtn;
 
+// Callback class for BLE client events
 class MyClientCallback : public BLEClientCallbacks {
   void onConnect(BLEClient *pclient) override {
     deviceConnected = true;
@@ -99,6 +105,7 @@ bool connectToServer() {
   return true;
 }
 
+// Callback class for BLE scan results
 class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
   void onResult(BLEAdvertisedDevice advertisedDevice) override {
     Serial.print("Found BLE device: ");
@@ -117,8 +124,10 @@ void setup() {
   Serial.begin(BAUD_RATE);
   Serial.println("Starting BLE Client application...");
 
+  // Initialize BLE device
   BLEDevice::init("");
 
+  // Start BLE scanning
   BLEScan *pBLEScan = BLEDevice::getScan();
   pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks());
   pBLEScan->setInterval(SCAN_INTERVAL);
@@ -126,10 +135,12 @@ void setup() {
   pBLEScan->setActiveScan(true);
   pBLEScan->start(SCAN_DURATION, false);
 
+  // Initialize joystick and button pins
   pinMode(A5, INPUT_PULLUP);
   pinMode(A4, INPUT);
   pinMode(A3, INPUT);
 
+  // Initialize LED strip
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
   FastLED.setBrightness(LED_BRIGHTNESS);
 }
@@ -139,6 +150,7 @@ void loop() {
   yVal = analogRead(A3);
   bttState = digitalRead(A5);
 
+  // Attempt to connect to the server if required
   if (doConnect) {
     if (connectToServer()) {
       Serial.println("Connected to BLE server");
@@ -148,7 +160,8 @@ void loop() {
     doConnect = false;
   }
 
-  if (connected) {//Transmit to the server the joystick data
+  // Send joystick and button data to the server
+  if (connected) {
     pRemoteCharX->writeValue(String(xVal), String(xVal).length());
     Serial.print("X: ");
     Serial.print(xVal);
@@ -164,16 +177,17 @@ void loop() {
     leds[0] = CRGB::Green;
     BLEDevice::getScan()->start(0);
   }
-  // set the RGB led when connected to the car
+
+  // Update LED color based on connection status
   if (deviceConnected) {
     leds[0] = CRGB::Blue;
   } 
   else {
     leds[0] = CRGB::Green;
   }
-
   FastLED.show();
 
+  // Update connection state
   if (deviceConnected && !oldDeviceConnected) {
     oldDeviceConnected = deviceConnected;
   }

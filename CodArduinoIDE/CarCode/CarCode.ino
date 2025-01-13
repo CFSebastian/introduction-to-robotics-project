@@ -2,7 +2,6 @@
 #include <BLEDevice.h>
 #include <BLEUtils.h>
 #include <BLEServer.h>
-#include <BLE2902.h>
 
 #define BAUD_RATE 115200
 
@@ -162,6 +161,7 @@ void setup() {
 
     BLEService *pService = pServer->createService(SERVICE_UUID);
 
+    // Create BLE characteristics for X, Y axes, and button
     pCharacteristicX = pService->createCharacteristic(
         CHARACTERISTIC_X_UUID,
         BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
@@ -183,6 +183,7 @@ void setup() {
     BLEDevice::startAdvertising();
     Serial.println("Characteristic defined! Now you can read it in your phone!");
 
+    // Initialize hardware pins
     pinMode(LED_RGB_R, OUTPUT);
     pinMode(LED_RGB_G, OUTPUT);
     pinMode(LED_RGB_B, OUTPUT);
@@ -207,9 +208,10 @@ void loop() {
     int inpYaxes = Y_DEADZONE;
     int inpBtn = true;
 
-    if (deviceConnected) {// read from the controler data
+    if (deviceConnected) {
         ledRgbSet(0, 0, 1);
 
+        // Read data from controller
         String xAxes = pCharacteristicX->getValue();
         inpXaxes = xAxes.toInt();
         Serial.print("X: ");
