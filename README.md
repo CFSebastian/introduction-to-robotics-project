@@ -274,7 +274,7 @@ In conclusion, the project works but is hindered by weak hardware connections an
 
 **L293D H-Bridge Driver**:  
 - [L293D Motor Driver Tutorial](https://lastminuteengineers.com/l293d-dc-motor-arduino-tutorial/)  
-- [L293 Datasheet](https://www.ti.com/lit/ds/symlink/l293.pdf)  
+- [L293D Datasheet](https://www.ti.com/lit/ds/symlink/l293.pdf)  
 
 **Passive Buzzer**:  
 - [Passive Active Buzzer](https://deepbluembedded.com/arduino-active-passive-buzzer/)  
