@@ -102,7 +102,7 @@ At this point, all the components of the project are connected and mounted on th
 ![plot](./Media/Car.PNG)
 
 #### Controller:
-![plot](./Media/Controller.PNG)
+![plot](./Media/ControllerKiCad.PNG)
 
 #### Images and prove that a component works:
 ![plot](./Media/Controler.jpg)
