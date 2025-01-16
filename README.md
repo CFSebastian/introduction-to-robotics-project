@@ -292,6 +292,6 @@ In conclusion, the project works but is hindered by weak hardware connections an
 
 **FastLED**:
 - [materials+examples](https://racheldebarros.com/arduino-projects/how-to-use-fastled-with-arduino-to-program-led-strips/)
-- [examples](https://github.com/FastLED/FastLED?utm_source=platformio&utm_medium=piohome)
+- [Librarie + examples](https://github.com/FastLED/FastLED?utm_source=platformio&utm_medium=piohome)
 
 
