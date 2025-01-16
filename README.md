@@ -58,8 +58,8 @@ At this point, all the components of the project are connected and mounted on th
   - The USB-C port is used to supply power to the board.
   - The 3.3V pin powers the joystick.
   - GPIO 3 and 4 read the analog inputs from the joystick's X and Y axes.
-  - GPIO 21 reads the joystick button.
-  - GPIO 20 (RX pin) controls the WS2812 LED. 
+  - GPIO 0 reads the joystick button.
+  - GPIO 21 controls the WS2812 LED. 
 - **Joystick Module**:
   - Generates input data based on the operator's actions.
   - The 5V pin powers the joystick with 3.3V (we use 3.3V because the ESP32-C3 SuperMini uses 3.3V logic; using 5V would distort the axis values).
